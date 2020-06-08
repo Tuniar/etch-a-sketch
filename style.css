@@ -1,0 +1,74 @@
+html {
+    font-size: 10px;
+    background-color: peachpuff;
+    background-size: cover;
+  }
+  
+body,html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+  }
+
+.wrapper {
+  height:100vh;
+}
+
+button {
+  background-color: goldenrod;
+  text-decoration: none;
+  color: white;
+  border-radius: .25rem;
+  text-align: center;
+  display: inline-block;
+  transition: all .3s;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+.hero > h1 {
+  font-size: 4rem;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.hero > div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero > button {
+  padding: 1rem;
+  margin-top: .75rem;
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sketchpad {
+  display: grid;
+  grid-template-columns: repeat(64, 1fr);
+  align-items: center;
+}
+
+.box {
+  width: 100%;
+  padding-bottom: 80%;
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: .5rem;
+}
+
+.box-fill {
+}

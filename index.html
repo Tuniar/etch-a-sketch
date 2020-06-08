@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+    <link href="style.css" rel="stylesheet">
+    <title>Sketch-a-Etch</title>
+</head>
+<body>
+    <main class="wrapper">
+        <section class="hero">
+            <h1>Start Drawing!</h1>
+            <div>
+                <button id="start">START!</button>
+                <button id="stop">CLEAR!</button>
+            </div>
+        </section>
+        <section class="sketchpad" id="sketchpad">
+        </section>
+    </main>
+</body>
+<script>
+    let boardExists = false;
+    function writeBoard() {
+        if (boardExists === false) {
+            const sketchpad = document.querySelector('.sketchpad')
+            const board = document.getElementById('sketchpad');
+            for (i = 0; i < 4096; i++) {
+                let div = document.createElement('div');
+                div.className = "box";
+                board.appendChild(div);
+            }
+            boardExists = true;
+            const squares = sketchpad.childNodes;
+            squares.forEach(e => e.addEventListener("mouseover", changeColor));
+            squares.forEach(e => e.addEventListener("click", removeColor));
+        };
+    };
+    function removeBoard() {
+        sketchpad.innerHTML = '';
+        boardExists = false;
+        writeBoard();
+    }
+
+    function changeColor(e) {
+        if (!(this.classList.contains('box-fill'))) {
+            this.classList.add('box-fill');
+            this.style.backgroundColor = "#"+((1<<24)*Math.random()|0).toString(16);
+            this.style.opacity = 0.1;
+        }
+        else {
+            style = getComputedStyle(this);
+            opacity = style.opacity;
+            if (opacity < 1) {
+                opacity = Number(opacity);
+                opacity += 0.1;
+                this.style.opacity = opacity;
+            }
+        }
+    };
+
+    function removeColor(e) {
+        if (this.classList.contains('box-fill')) {
+            this.classList.remove('box-fill');
+            this.style.backgroundColor = "#ffffff";
+            this.style.opacity = 1;
+        }
+    }
+
+    const start = document.getElementById('start');
+    start.addEventListener("click", writeBoard);
+
+    const clear = document.getElementById('stop');
+    clear.addEventListener("click", removeBoard);
+</script>
